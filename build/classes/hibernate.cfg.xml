@@ -32,7 +32,6 @@
         <!-- <property name="hbm2ddl.auto">update</property> -->
  
 		<mapping resource="com/find1x/dianfan/User.hbm.xml"/>
-		<mapping class="com.find1x.dianfan.User"/>
     </session-factory>
 
 </hibernate-configuration>

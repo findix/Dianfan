@@ -10,10 +10,10 @@
 <title>世界上第一个人脸识别点饭网站</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- stylesheet -->
+
 <link href="css/dianfan.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<!-- icon -->
+
 <link rel="icon" href="httP://www.find1x.com/favicon.ico"
 	type="image/x-icon" />
 <link rel="shortcut icon" href="http://www.find1x.com/favicon.ico"
@@ -34,7 +34,7 @@
 		<br />
 		<button type="button" class="btn btn-primary"
 			style="width: 150px; height: 150px;" data-toggle="modal"
-			data-target="#videoModal"　>
+			data-target="#videoModal" >
 			<span class="glyphicon glyphicon-user"></span><br />
 			<br />开始人脸识别 
 		</button>
@@ -57,7 +57,7 @@
 					<h4 class="modal-title" id="videoModalLabel">拍摄一张照片以登录</h4>
 				</div>
 				<div class="modal-body" align="center">
-					<p id="info">对不起，主页菌遇到了点麻烦。请确认摄像头使用正常并允许使用。<br />推荐使用谷歌Chrome浏览器。</p>
+					<p id="info">对不起，主页菌遇到了点麻烦。<br />请确认摄像头使用正常并允许使用。<br />推荐使用谷歌Chrome浏览器。</p>
 					<video id="video" width="320" height="240" autoplay></video>
 					<canvas id="canvas" width="320" height="240" style="display: none"></canvas>
 					<img id="snapimg" width="320" height="240"></img>

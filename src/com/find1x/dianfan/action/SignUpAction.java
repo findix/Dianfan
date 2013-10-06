@@ -25,7 +25,7 @@ public class SignUpAction extends ActionSupport{
 	}
 	@Override
 	public String execute() throws Exception {
-		message="×¢²á";
+		message="¹§Ï²Äú£¬×¢²á³É¹¦£¡";
 		UserDAO uDao=new UserDAO(user);
 		uDao.save();
 		return SUCCESS;

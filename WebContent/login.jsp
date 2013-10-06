@@ -39,31 +39,61 @@
 	</div>
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="login">
-			<form id=login action=LoginAction method="post" class="form-login">
-				<input name="user.username" type="text" class="form-control"
-					placeholder="用户名" autofocus /> <input name="user.password"
-					type="password" class="form-control" placeholder="密码" /> <label
-					class="checkbox"> <input type="checkbox"
-					value="remember-me" /> 记住我
-				</label>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					登录</button>
+			<form action=LoginAction method="post" class="form-login">
+				<input id="usernameL" name="user.username" type="text"
+					class="form-control" placeholder="用户名" autofocus
+					onkeydown="if(event.keyCode==13){checkLogin();}" /> <input
+					id="passwordL" name="user.password" type="password"
+					class="form-control" placeholder="密码"
+					onkeydown="if(event.keyCode==13){checkLogin();}" /> <label
+					class="checkbox" style="display: none"> <input
+					type="checkbox" value="remember-me" /> 记住我
+				</label> <br /> <input class="btn btn-lg btn-primary btn-block"
+					type="button" onclick="checkLogin()" value="登录" />
 			</form>
 		</div>
+
 		<div class="tab-pane fade" id="signup">
-			<form id="signup" action="SignUpAction" method="post"
-				class="form-signup">
-				<input id="username" name="user.username" type="text"
-					class="form-control" placeholder="用户名" autofocus /> <input
-					id="password" name="user.password" type="password"
-					class="form-control" placeholder="密码" /> <input id="repassword"
-					name="user.repassword" type="password" class="form-control"
-					placeholder="请再输一遍您的密码" /> <br /> <input
-					class="btn btn-lg btn-primary btn-block" type="submit" value="注册" />
-					</form>
+			<form action="SignUpAction" method="post" class="form-signup">
+				<input id="usernameS" name="user.username" type="text"
+					class="form-control" placeholder="用户名" autofocus
+					onkeydown="if(event.keyCode==13){checkSignUp();}" /> <input
+					id="passwordS" name="user.password" type="password"
+					class="form-control" placeholder="密码"
+					onkeydown="if(event.keyCode==13){checkSignUp();}" /> <input
+					id="repasswordS" name="user.repassword" type="password"
+					class="form-control" placeholder="请再输一遍您的密码"
+					onkeydown="if(event.keyCode==13){checkSignUp();}" /> <br /> <input
+					class="btn btn-lg btn-primary btn-block" type="button"
+					onclick="checkSignUp()" value="注册" />
+			</form>
 		</div>
 	</div>
-
+	<script>
+		function checkLogin() {
+			with (document.all) {
+				if (usernameL.value == "" || passwordL.value == "") {
+					alert("对不起，用户名和密码不能为空，请重新输入。");
+				} else
+					document.forms[0].submit();
+			}
+		}
+	</script>
+	<script>
+		function checkSignUp() {
+			with (document.all) {
+				if (usernameS.value == "" || passwordS.value == ""
+						|| repasswordS == "") {
+					alert("对不起，用户名和密码不能为空，请重新输入。");
+				} else if (passwordS.value != repasswordS.value) {
+					alert("对不起，您两次输入的密码不一致，请重新输入。");
+					passwordS.value = "";
+					repasswordS.value = "";
+				} else
+					document.forms[1].submit();
+			}
+		}
+	</script>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 

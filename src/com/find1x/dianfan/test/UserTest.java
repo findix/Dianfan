@@ -9,12 +9,18 @@ public class UserTest {
 
 	@Test
 	public void test() {
-		User user=new User();
+		User user = new User();
 		user.setUsername("fengxiang");
 		user.setPassword("123456");
-		
-		UserDAO uDao=new UserDAO(user);
+
+		UserDAO uDao = new UserDAO(user);
 		uDao.save();
+
+		UserDAO uuDao = new UserDAO(user);
+		uuDao.save();
+
+		UserDAO uuuDao = new UserDAO(user);
+		uuuDao.save();
 	}
 
 }

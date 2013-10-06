@@ -16,6 +16,6 @@ public class UserDAO {
 		session.save(user);
 		session.getTransaction().commit();
 		session.close();
-		sf.close();
+		//sf.close();
 	}
 }
