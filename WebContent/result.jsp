@@ -11,10 +11,10 @@
 <title>世界上第一个人脸识别点饭网站</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- stylesheet -->
+
 <link href="css/dianfan.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<!-- icon -->
+
 <link rel="icon" href="httP://www.find1x.com/favicon.ico"
 	type="image/x-icon" />
 <link rel="shortcut icon" href="http://www.find1x.com/favicon.ico"
