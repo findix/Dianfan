@@ -1,26 +1,15 @@
 package com.find1x.dianfan.test;
 
-import org.junit.Test;
 
-import com.find1x.dianfan.User;
-import com.find1x.dianfan.UserDAO;
+import org.junit.Test;
 
 public class UserTest {
 
 	@Test
 	public void test() {
-		User user = new User();
-		user.setUsername("fengxiang");
-		user.setPassword("123456");
-
-		UserDAO uDao = new UserDAO(user);
-		uDao.save();
-
-		UserDAO uuDao = new UserDAO(user);
-		uuDao.save();
-
-		UserDAO uuuDao = new UserDAO(user);
-		uuuDao.save();
+		for (int i = 0; i < 10; i++) {
+			System.out.println(i);
+		}
 	}
 
 }

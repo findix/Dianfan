@@ -7,6 +7,10 @@ import com.find1x.dianfan.util.QueryUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	private String message;
 	public User getUser() {

@@ -18,14 +18,22 @@
 				login.jsp
 			</result>
 		</action>
-		<action name="SignUpAction" class="com.find1x.dianfan.action.SignUpAction">
-		    <result>
+		<action name="SignUp" class="com.find1x.dianfan.action.SignUpAction">
+			<result>
 				result.jsp
 			</result>
 		</action>
-		<action name="LoginAction" class="com.find1x.dianfan.action.LoginAction">
-		    <result>
+		<action name="Login" class="com.find1x.dianfan.action.LoginAction">
+			<result>
 				result.jsp
+			</result>
+		</action>
+		<action name="FaceGetter" class="com.find1x.dianfan.action.FaceGetterAction">
+		   
+		</action>
+		<action name="FaceTest">
+			<result>
+				FaceTest.jsp
 			</result>
 		</action>
 	</package>

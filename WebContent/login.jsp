@@ -39,7 +39,7 @@
 	</div>
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="login">
-			<form action=LoginAction method="post" class="form-login">
+			<form action=Login method="post" class="form-login">
 				<input id="usernameL" name="user.username" type="text"
 					class="form-control" placeholder="用户名" autofocus
 					onkeydown="if(event.keyCode==13){checkLogin();}" /> <input
@@ -54,7 +54,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="signup">
-			<form action="SignUpAction" method="post" class="form-signup">
+			<form action="SignUp" method="post" class="form-signup">
 				<input id="usernameS" name="user.username" type="text"
 					class="form-control" placeholder="用户名" autofocus
 					onkeydown="if(event.keyCode==13){checkSignUp();}" /> <input
