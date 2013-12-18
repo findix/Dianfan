@@ -39,8 +39,7 @@
 			style="width: 150px;"> <span class="glyphicon glyphicon-log-in"></span>
 			直接登录
 		</a> <br /> <br /> <a type="button" href="FaceTest"
-			class="btn btn-success" style="width: 150px;"> 复制照片Url路径识别
-		</a>
+			class="btn btn-success" style="width: 150px;"> 复制照片Url路径识别 </a>
 	</div>
 
 	<!-- Modal -->
@@ -56,7 +55,7 @@
 				<div class="modal-body" align="center">
 					<form action="FaceGetter" method="post" id="face">
 						<input type="hidden" name="imgData" id="imgData" />
-						<div id=wait class="alert alert-info" style="display:none">请稍候……(可能需要较长时间)</div>
+						<div id=wait class="alert alert-info" style="display: none">请稍候……(可能需要较长时间)</div>
 						<button id="snap" type="button" class="btn btn-default">拍照并识别</button>
 						<script>
 							function doSubmit() {
@@ -71,8 +70,8 @@
 						对不起，主页菌遇到了点麻烦。<br />请确认摄像头使用正常并允许使用。<br />推荐使用谷歌Chrome浏览器。
 					</p>
 					<video id="video" width="320" height="240" autoplay></video>
-					<canvas id="canvas" width="320" height="240" style="display: none"></canvas>
-					<img id="snapimg" width="320" height="240"></img>
+					<canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+					<img id="snapimg" width="320" height="240" style="display: none;"></img>
 					<script>
 						// Put event listeners into place
 						window
@@ -93,7 +92,6 @@
 																"Video capture error: ",
 																error.code);
 											};
-
 											// Put video listeners into place
 											if (navigator.getUserMedia) {
 												// Standard
@@ -148,9 +146,10 @@
 																								"src"));
 																var form = document
 																		.getElementById("face");
-																$("#snap").hide();
+																$("#snap")
+																		.hide();
 																$("#wait")
-																		.show();	
+																		.show();
 																form.submit();
 															});
 										}, false);

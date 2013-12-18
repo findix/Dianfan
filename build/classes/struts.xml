@@ -29,7 +29,9 @@
 			</result>
 		</action>
 		<action name="FaceGetter" class="com.find1x.dianfan.action.FaceGetterAction">
-		   
+		   <result>
+		   		faceResult.jsp
+		   </result>
 		</action>
 		<action name="FaceTest">
 			<result>

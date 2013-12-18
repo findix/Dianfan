@@ -40,6 +40,7 @@ public class FaceGetterAction extends ActionSupport {
 	private PrintWriter out;
 	private String url;
 	private String imgData;
+	private String resultString;
 
 	@Override
 	public String execute() throws Exception {
@@ -51,31 +52,34 @@ public class FaceGetterAction extends ActionSupport {
 		imgData = request.getParameter("imgData");
 		System.out.println(url);
 		System.out.println(imgData);
-//		for (byte bytes : (getByteArrayFromBase64(imgData))) {
-//			System.out.print(bytes + " ");
-//		}
+		// for (byte bytes : (getByteArrayFromBase64(imgData))) {
+		// System.out.print(bytes + " ");
+		// }
 
 		if (imgData != null && url == null) {
 			base64ToImage(imgData);
-			out.println("<img src=\"" + imgData + "\">");
-			out.println("<br /><br />");
+			// out.println("<img src=\"" + imgData + "\">");
+			// out.println("<br /><br />");
 			detectByImg();
-			out.println(result.toString());
-			out.println("<br /><br />");
-			faceInfo();
-			out.println("<a href=\"index\">返回</a>");
+			// out.println(result.toString());
+			// out.println("<br /><br />");
+			setResultString(faceInfo());
+			// out.println("<a href=\"index\">返回</a>");
+			return SUCCESS;
 		}
 		if (url != null && imgData == null) {
-			out.println("<img src=\"" + url + "\" /><br />");
+			// out.println("<img src=\"" + url + "\" /><br />");
 			detectByUrl();
-			out.println(result.toString());
-			out.println("<br /><br />");
-			faceInfo();
-			out.println("<a href=\"FaceTest\">返回</a>");
+			// out.println(result.toString());
+			// out.println("<br /><br />");
+			setResultString(faceInfo());
+			// out.println("<a href=\"FaceTest\">返回</a>");
+			return SUCCESS;
 		}
 		if (url == null && imgData == null) {
 			out.println("什么都没传过来啊！到底发生了什么！");
 			out.println("<a href=\"index\">返回</a>");
+			return ERROR;
 		}
 		out.close();
 		return SUCCESS;
@@ -96,14 +100,15 @@ public class FaceGetterAction extends ActionSupport {
 
 	private void detectByImg() {
 		try {
-			File file=new File("F:/workspace/dianfan/WebContent/img/a.png");
+			File file = new File("F:/workspace/dianfan/WebContent/img/a.png");
 			PostParameters postParameters = new PostParameters()
 					.setImg(file)
 					.setAttribute("gender,age,race,smiling,glass,pose,landmark");
 			result = httpRequests
 					.request("detection", "detect", postParameters);
-			long nowTime=System.currentTimeMillis();
-			file.renameTo(new File("F:/workspace/dianfan/WebContent/img/"+nowTime+".png"));
+			long nowTime = System.currentTimeMillis();
+			file.renameTo(new File("F:/workspace/dianfan/WebContent/img/"
+					+ nowTime + ".png"));
 		} catch (FaceppParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,9 +166,11 @@ public class FaceGetterAction extends ActionSupport {
 		}
 	}
 
-	private void faceInfo() {
+	private String faceInfo() {
+		JSONObject face = null;
+		String resultString = null;
 		try {
-			JSONObject face = result.getJSONArray("face").getJSONObject(0);
+			face = result.getJSONArray("face").getJSONObject(0);
 			out.println("id：" + face.getString("face_id"));
 			JSONObject attribute = face.getJSONObject("attribute");
 			JSONObject age = attribute.getJSONObject("age");
@@ -171,22 +178,65 @@ public class FaceGetterAction extends ActionSupport {
 			JSONObject race = attribute.getJSONObject("race");
 			JSONObject smiling = attribute.getJSONObject("smiling");
 			JSONObject glass = attribute.getJSONObject("glass");
-			out.println("年龄："
+			resultString = "年龄："
 					+ (age.getInt("value") + "岁 (误差：" + age.getInt("range"))
-					+ ")");
-			out.println("是否带眼镜：" + glass.getString("value") + " "
-					+ glass.getDouble("confidence"));
-			out.println("性别：" + gender.getString("value") + " "
-					+ gender.getDouble("confidence"));
-			out.println("人种：" + race.getString("value") + " "
-					+ race.getDouble("confidence"));
-			out.println("笑意：" + smiling.getDouble("value"));
-
+					+ ")" + "<br />" + "是否带眼镜："
+					+ (glass.getString("value").equals("None") ? "否" : "是")
+					+ " 确信度：" + glass.getDouble("confidence") + "<br />"
+					+ "性别："
+					+ ((gender.getString("value").equals("Male")) ? "男" : "女")
+					+ " 确信度：" + gender.getDouble("confidence") + "<br />" + "人种："
+					+ race.getString("value") + " 确信度："
+					+ race.getDouble("confidence") + "<br />" + "微笑指数："
+					+ smiling.getDouble("value");
+			// out.println("年龄："
+			// + (age.getInt("value") + "岁 (误差：" + age.getInt("range"))
+			// + ")");
+			// out.println("是否带眼镜：" + glass.getString("value") + " "
+			// + glass.getDouble("confidence"));
+			// out.println("性别：" + gender.getString("value") + " "
+			// + gender.getDouble("confidence"));
+			// out.println("人种：" + race.getString("value") + " "
+			// + race.getDouble("confidence"));
+			// out.println("微笑指数：" + smiling.getDouble("value"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return resultString;
 
+	}
+
+	public JSONObject getResult() {
+		return result;
+	}
+
+	public void setResult(JSONObject result) {
+		this.result = result;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getImgData() {
+		return imgData;
+	}
+
+	public void setImgData(String imgData) {
+		this.imgData = imgData;
+	}
+
+	public String getResultString() {
+		return resultString;
+	}
+
+	public void setResultString(String resultString) {
+		this.resultString = resultString;
 	}
 
 }
