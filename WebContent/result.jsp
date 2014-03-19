@@ -11,10 +11,8 @@
 <title>世界上第一个人脸识别点饭网站</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <link href="css/dianfan.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
 <link rel="icon" href="httP://www.find1x.com/favicon.ico"
 	type="image/x-icon" />
 <link rel="shortcut icon" href="http://www.find1x.com/favicon.ico"
@@ -26,8 +24,18 @@
 	<script src="../../assets/js/respond.min.js"></script>
 	<![endif]-->
 <body>
+	<%
+		String username = "";
+		if (session.getAttribute("username") != null) {
+			username = session.getAttribute("username").toString();
+		}
+	%>
+
+	<!-- nav -->
+	<%@ include file="nav.html"%>
 	<div align="center">
-		<div class="jumbotron" align="left" style="margin-top: 225px; max-width: 800px">
+		<div class="jumbotron" align="left"
+			style="margin-top: 225px; max-width: 800px">
 			<h1>
 				<s:property value="message" />
 			</h1>
@@ -39,7 +47,7 @@
 				<br /> 请妥善保存。
 			</p>
 			<p>
-				<a href="login" class="btn btn-primary btn-lg">返回</a>
+				<a href="login?type=login" class="btn btn-primary btn-lg">点击返回主页</a>
 			</p>
 		</div>
 	</div>

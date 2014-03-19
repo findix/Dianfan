@@ -18,20 +18,58 @@
 				login.jsp
 			</result>
 		</action>
-		<action name="SignUp" class="com.find1x.dianfan.action.SignUpAction">
+		<action name="order">
 			<result>
+				order.jsp
+			</result>
+		</action>
+		<action name="orderResult">
+			<result>
+				orderResult.jsp
+			</result>
+		</action>
+		<action name="manage">
+			<result>
+				manage.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.find1x.dianfan.action.LogoutAction">
+			<result type="redirect">
+				/
+			</result>
+		</action>
+		<action name="SignUp" class="com.find1x.dianfan.action.SignUpAction">
+			<result type="redirect">
 				result.jsp
 			</result>
 		</action>
 		<action name="Login" class="com.find1x.dianfan.action.LoginAction">
-			<result>
-				result.jsp
+			<result type="redirect">
+				/
+			</result>
+			<result name="error" type="redirect">
+				login.jsp?type=login&amp;status=error
+			</result>
+		</action>
+		<action name="Order" class="com.find1x.dianfan.action.OrderAction">
+			<result type="redirect">
+				orderResult
+			</result>
+		</action>
+		<action name="AddDish" class="com.find1x.dianfan.action.AddDishAction">
+			<result type="redirect">
+				manage
+			</result>
+		</action>
+		<action name="DeleteDish" class="com.find1x.dianfan.action.DeleteDishAction">
+			<result type="redirect">
+				manage
 			</result>
 		</action>
 		<action name="FaceGetter" class="com.find1x.dianfan.action.FaceGetterAction">
-		   <result>
-		   		faceResult.jsp
-		   </result>
+			<result>
+				faceResult.jsp
+			</result>
 		</action>
 		<action name="FaceTest">
 			<result>

@@ -1,0 +1,51 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span
+					class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">点饭网</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="/dianfan/">首页</a>
+				</li>
+				<% if
+				(username.equals("")) { %>
+				<li>
+					<a href="login?type=login&status=normal">登录</a>
+				</li>
+				<li>
+					<a href="login?type=signup&status=normal">注册</a>
+				</li>
+				<% } else
+				{ %>
+				<li>
+					<a href='javascript:;'>
+						欢迎您,
+						<%=username%></a>
+				</li>
+				<li>
+					<a href="logout">退出</a>
+				</li>
+				<% } %></ul>
+			<% if (username.equals("admin")){ %>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="manage" id="admin" class="navbar-brand">管理</a>
+				</li>
+			</ul>
+			<% } %></div>
+	</div>
+</nav>

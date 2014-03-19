@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<%@page import="javax.websocket.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,11 +8,13 @@
 <meta http-equiv="Expires" content="0">
 <meta http-equiv="kiben" content="no-cache">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>人脸识别测试</title>
+<title>点饭网|dianfan.tk - 第一家人脸识别点餐网站</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- stylesheet -->
 <link href="css/dianfan.css" rel="stylesheet" media="screen" />
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<!-- icon -->
 <link rel="icon" href="httP://www.find1x.com/favicon.ico"
 	type="image/x-icon" />
 <link rel="shortcut icon" href="http://www.find1x.com/favicon.ico"
@@ -24,24 +27,54 @@
 	<![endif]-->
 </head>
 <body>
-	<div align="center">
-		<h2
-			style="color: white; text-shadow: 1px 1px 2px #7d552d; margin-top: 225px;">
-			<strong>人脸识别测试</strong>
-		</h2>
-		<br />
-		<button type="button" class="btn btn-primary"
-			style="width: 150px; height: 150px;" data-toggle="modal"
-			data-target="#videoModal">
-			<span class="glyphicon glyphicon-user"></span><br /> <br />开始人脸识别
-		</button>
-		<br /> <br /> <a type="button" href="login" class="btn btn-default"
-			style="width: 150px;"> <span class="glyphicon glyphicon-log-in"></span>
-			直接登录
-		</a> <br /> <br /> <a type="button" href="FaceTest"
-			class="btn btn-success" style="width: 150px;"> 复制照片Url路径识别 </a>
-	</div>
+	<%
+		String username = "";
+		if (session.getAttribute("username") != null) {
+			username = session.getAttribute("username").toString();
+		}
+	%>
 
+	<!-- nav -->
+	<%@ include file="nav.html"%>
+	<%
+		if (username == "") {
+	%>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>欢迎来到点饭网</h1>
+			<p>点饭网是一个可以“刷脸”点饭的神奇网站。</p>
+			<p>
+				<a class="btn btn-primary btn-large"
+					href="login?type=login&status=normal">登录</a> <a
+					class="btn btn-success btn-large" href="login?type=signup&status=normal">立即注册</a>
+			</p>
+		</div>
+	</div>
+	<%
+		} else {
+	%>
+	<div class="container">
+		<div class="row" align="center" style="margin:20px">
+			<div class="col-md-4">
+				<button type="button" class="btn btn-primary"
+					style="width: 200px; height: 200px;" data-toggle="modal"
+					data-target="#videoModal">
+					<span class="glyphicon glyphicon-user"></span> <br /> <br />
+					人脸识别点餐
+				</button>
+			</div>
+			<div class="col-md-4">
+				<button type="button" onclick="window.location.href='order'" class="btn btn-default"
+					style="width: 200px; height: 200px;" data-toggle="modal">
+					<span class="glyphicon glyphicon-log-in"></span> <br /> <br />直接点餐
+				</button>
+			</div>
+			<div class="col-md-4">
+				<button type="button" onclick="window.location.href='FaceTest'" class="btn btn-success"
+					style="width: 200px; height: 200px;" data-toggle="modal">通过照片Url识别</button>
+			</div>
+		</div>
+	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="videoModal" tabindex="-1" role="dialog"
 		aria-labelledby="videoModal" aria-hidden="true">
@@ -67,7 +100,7 @@
 						</script>
 					</form>
 					<p id="info">
-						对不起，主页菌遇到了点麻烦。<br />请确认摄像头使用正常并允许使用。<br />推荐使用谷歌Chrome浏览器。
+						对不起，主页菌遇到了点麻烦。 <br /> 请确认摄像头使用正常并允许使用。 <br /> 推荐使用谷歌Chrome浏览器。
 					</p>
 					<video id="video" width="320" height="240" autoplay></video>
 					<canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
@@ -161,8 +194,54 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<%
+		}
+	%>
+	<div class="container">
+		<div class="panel panel-warning">
+			<div class="panel-heading">今日美食推荐</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img
+								src="./images/3001_131012153636_1.jpg"
+								alt="三角烤饼">
+							<div class="caption">
+								<h3>三角烤饼</h3>
+								<p>咸酥口味的三角烤饼，很经典，里面夹点香菜，香香的，一般中午供应，去晚了可就没有了啊！</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img
+								src="./images/http_www.homeping.tidi.tw_picture_product_big5_frychicken.JPG"
+								alt="双排">
+							<div class="caption">
+								<h3>双排</h3>
+								<p>王记美食家的双排，由蒜香鸡排和小鸡腿组成的，尤其是蒜排，外酥里嫩，真的好吃啊，而且他家的很实惠，给的量也算是食堂最多的！</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img
+								src="./images/1008160361.jpg"
+								alt="四川麻辣烫">
+							<div class="caption">
+								<h3>四川麻辣烫</h3>
+								<p>
+									四川麻辣烫，爱吃麻辣烫的同学一定不能错过啊，不算地道，但味道还不错，他家还有煮的串儿，来碗麻辣烫再放些煮串，真是享受啊，不过本人爱吃米饭，所以时常在一楼买2两饭，然后上二楼吃！馋了！
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>
