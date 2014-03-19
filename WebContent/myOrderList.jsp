@@ -51,6 +51,7 @@
 								<td>订单编号</td>
 								<td>下单时间</td>
 								<td>订单内容</td>
+								<td>订餐人</td>
 								<td>交易情况</td>
 							</tr>
 						</thead>
@@ -64,6 +65,7 @@
 								<td><%=QueryUtil.getFormatTime(dish.get("time"))%></td>
 								<td><%=(new StringBuffer(dish.get("dishs").toString()))
 						.substring(1, dish.get("dishs").toString().length() - 1)%></td>
+								<td><%=dish.get("username")%></td>
 								<td><%=Boolean.valueOf(dish.get("finished").toString()) ? "已完成"
 						: "未完成"%></td>
 							</tr>

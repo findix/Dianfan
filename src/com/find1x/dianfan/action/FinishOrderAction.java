@@ -23,6 +23,7 @@ public class FinishOrderAction extends ActionSupport {
 	HttpSession session = request.getSession();
 
 	private static final long serialVersionUID = 1L;
+	
 
 	@Override
 	public String execute() throws Exception {

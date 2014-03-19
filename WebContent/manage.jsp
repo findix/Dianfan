@@ -34,9 +34,9 @@
 <body>
 	<%
 		String username = "";
-		if (session.getAttribute("username") != null) {
-			username = session.getAttribute("username").toString();
-		}
+			if (session.getAttribute("username") != null) {
+		username = session.getAttribute("username").toString();
+			}
 	%>
 
 	<!-- nav -->
@@ -65,9 +65,8 @@
 									<td><%=dish.get("name")%></td>
 									<td><%=dish.get("type")%></td>
 									<td><%=dish.get("spicy")%></td>
-									<td><input type="button" class="btn btn-warning"
-										id=<%=dish.get("name")%> value="修改" /> <input type="button"
-										class="btn btn-danger" id=<%=dish.get("name")%> value="删除"
+									<td><input type="button" class="btn btn-danger"
+										id=<%=dish.get("name")%> value="删除"
 										onClick='deleteDish("<%=dish.get("name")%>")' /></td>
 								</tr>
 								<%

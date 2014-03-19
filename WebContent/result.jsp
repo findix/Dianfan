@@ -36,18 +36,12 @@
 	<div align="center">
 		<div class="jumbotron" align="left"
 			style="margin-top: 225px; max-width: 800px">
-			<h1>
+			<h2>
 				<s:property value="message" />
-			</h1>
+			</h2>
 			<p>
-				您的用户名：
-				<s:property value='user.username' />
-				<br /> 您的密码 ：
-				<s:property value='user.password' />
-				<br /> 请妥善保存。
-			</p>
-			<p>
-				<a href="login?type=login" class="btn btn-primary btn-lg">点击返回主页</a>
+				<a href="/dianfan/"
+					class="btn btn-primary btn-lg">点击返回</a>
 			</p>
 		</div>
 	</div>

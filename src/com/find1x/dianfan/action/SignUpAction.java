@@ -38,12 +38,14 @@ public class SignUpAction extends ActionSupport {
 		List<DBObject> list = QueryUtil.getList(user.getUsername());
 		if (list.size() > 0) {
 			message = "对不起，该用户名已被注册";
+			return ERROR;
 		} else {
 			DBCollection users = MongoDBUtil.getCollection("user");
 			users.save(MongoDBUtil.convertUser2DBObject(user));
 			message = "恭喜您，注册成功！";
+			return SUCCESS;
 		}
-		return SUCCESS;
+
 	}
 
 }
