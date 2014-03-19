@@ -33,6 +33,17 @@
 				manage.jsp
 			</result>
 		</action>
+		<action name="myOrderList">
+			<result>
+				myOrderList.jsp
+			</result>
+		</action>
+		<action name="orderList">
+			<result>
+				orderList.jsp
+			</result>
+		</action>
+
 		<action name="logout" class="com.find1x.dianfan.action.LogoutAction">
 			<result type="redirect">
 				/
@@ -54,6 +65,11 @@
 		<action name="Order" class="com.find1x.dianfan.action.OrderAction">
 			<result type="redirect">
 				orderResult
+			</result>
+		</action>
+		<action name="FinishOrder" class="com.find1x.dianfan.action.FinishOrderAction">
+			<result type="redirect">
+				orderList
 			</result>
 		</action>
 		<action name="AddDish" class="com.find1x.dianfan.action.AddDishAction">

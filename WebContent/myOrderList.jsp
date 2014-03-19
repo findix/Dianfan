@@ -43,16 +43,39 @@
 	<div class="container" style="margin-top: 100px">
 		<div class="container">
 			<div class="panel panel-success">
-				<div class="panel-heading">提交状态</div>
+				<div class="panel-heading">我的全部订单</div>
 				<div class="panel-body">
-					<h2>恭喜您订单成功提交！</h2>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<td>订单编号</td>
+								<td>下单时间</td>
+								<td>订单内容</td>
+								<td>交易情况</td>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								for (DBObject dish : QueryUtil.getOrderList(username)) {
+							%>
+
+							<tr>
+								<td><%=dish.get("id")%></td>
+								<td><%=QueryUtil.getFormatTime(dish.get("time"))%></td>
+								<td><%=(new StringBuffer(dish.get("dishs").toString()))
+						.substring(1, dish.get("dishs").toString().length() - 1)%></td>
+								<td><%=Boolean.valueOf(dish.get("finished").toString()) ? "已完成"
+						: "未完成"%></td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
 				</div>
-				<a class="btn btn-normal" href="myOrderList">查看订单</a> <a
-					class="btn btn-normal" href="order">再来一份</a>
 			</div>
 		</div>
-	</div>
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
