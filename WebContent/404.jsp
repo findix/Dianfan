@@ -41,69 +41,15 @@
 	<!-- nav -->
 	<%@ include file="nav.html"%>
 
-	<div class="container" style="margin-top: 50px">
+	<div class="container" style="margin-top: 100px">
 		<div id="jumbotron" class="jumbotron" align="left"
 			style="width: 100%;">
-			<table>
-				<tr>
-					<td>
-						<div>
-							<img src="${imgData}${url}" class="img-thumbnail" style="max-hight: 160px" />
-						</div>
-					</td>
-					<td>
-						<div style="position: relative; left: 30px;">${resultString}</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="alert alert-success">根据您的照片推荐您:${dishes}</div>
-		<div class="panel panel-success">
-			<div class="panel-heading">菜单</div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<form action="Order" method="post">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<td>菜名</td>
-									<td>类型</td>
-									<td>辣度</td>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									for (DBObject dish : QueryUtil.getMenu()) {
-								%>
-
-								<tr>
-									<td><%=dish.get("name")%></td>
-									<td><%=dish.get("type")%></td>
-									<td><%=dish.get("spicy")%></td>
-									<td><input type="checkbox" name="dish"
-										value=<%=dish.get("name")%>>点一个</td>
-								</tr>
-								<%
-									}
-								%>
-							</tbody>
-						</table>
-						<input class="btn btn-normal btn-lg" type="submit">
-					</form>
-				</div>
-			</div>
+			<h2>对不起哦，我很懒，所以出错鸟……</h2>
+			<br />
+			<a class="btn btn-default" href="/dianfan">回到主页</a>
 		</div>
 	</div>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script>
-		var list = '${dishes}';
-		list = list.slice(1, list.length - 1);
-		var dishes = list.split(", ");
-		for (var i = 0; i < dishes.length; i++) {
-			console.log('\'[value=' + dishes[i] + ']\'');
-			$('[value=' + dishes[i] + ']').attr("checked", "checked");
-		};
-	</script>
 </body>
 </html>

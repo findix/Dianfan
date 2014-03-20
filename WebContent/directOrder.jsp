@@ -33,31 +33,15 @@
 <body>
 	<%
 		String username = "";
-		if (session.getAttribute("username") != null) {
-			username = session.getAttribute("username").toString();
-		}
+			if (session.getAttribute("username") != null) {
+		username = session.getAttribute("username").toString();
+			}
 	%>
 
 	<!-- nav -->
 	<%@ include file="nav.html"%>
 
-	<div class="container" style="margin-top: 50px">
-		<div id="jumbotron" class="jumbotron" align="left"
-			style="width: 100%;">
-			<table>
-				<tr>
-					<td>
-						<div>
-							<img src="${imgData}${url}" class="img-thumbnail" style="max-hight: 160px" />
-						</div>
-					</td>
-					<td>
-						<div style="position: relative; left: 30px;">${resultString}</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="alert alert-success">根据您的照片推荐您:${dishes}</div>
+	<div class="container" style="margin-top: 500px">
 		<div class="panel panel-success">
 			<div class="panel-heading">菜单</div>
 			<div class="panel-body">

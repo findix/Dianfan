@@ -23,9 +23,9 @@
 				changePasswd.jsp
 			</result>
 		</action>
-		<action name="order">
+		<action name="directOrder">
 			<result>
-				order.jsp
+				directOrder.jsp
 			</result>
 		</action>
 		<action name="orderResult">
@@ -46,6 +46,11 @@
 		<action name="orderList">
 			<result>
 				orderList.jsp
+			</result>
+		</action>
+		<action name="faceTest">
+			<result>
+				faceTest.jsp
 			</result>
 		</action>
 
@@ -100,12 +105,10 @@
 		</action>
 		<action name="FaceGetter" class="com.find1x.dianfan.action.FaceGetterAction">
 			<result>
-				faceResult.jsp
+				order.jsp
 			</result>
-		</action>
-		<action name="FaceTest">
-			<result>
-				FaceTest.jsp
+			<result name="error" type="redirect">
+				404.jsp
 			</result>
 		</action>
 	</package>
