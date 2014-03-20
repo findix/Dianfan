@@ -54,7 +54,7 @@ window
                         var form = document
                             .getElementById("face");
                         $("#snap").hide();
-                        $("#").show();
+                        $("#wait").show();
                         form.submit();
                     });
         }, false);

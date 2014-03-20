@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.find1x.dianfan.User;
+import com.find1x.dianfan.pojos.User;
 import com.find1x.dianfan.util.QueryUtil;
 import com.mongodb.DBObject;
 import com.opensymphony.xwork2.ActionContext;

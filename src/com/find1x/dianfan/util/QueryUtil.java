@@ -3,10 +3,6 @@ package com.find1x.dianfan.util;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-
-import com.find1x.dianfan.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;

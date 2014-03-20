@@ -46,15 +46,15 @@
 				<div class="panel-heading">修改密码</div>
 				<div class="panel-body">
 					<form action="ChangePasswd" method="post" class="form-signup">
-						<input id="passwordS" name="user.username" type="text" class="form-control"
-							placeholder="原密码" autofocus
-							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /> <input
-							id="newPassword" name="user.password" type="password"
+						<input id="passwordS" name="user.username" type="text"
+							class="form-control" placeholder="原密码" autofocus
+							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /><br />
+						<input id="newPassword" name="user.password" type="password"
 							class="form-control" placeholder="新的密码"
-							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /> <input
-							id="reNewPasswordS"  type="password"
-							class="form-control" placeholder="请再输一遍您的新密码"
-							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /> <br />
+							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /><br />
+						<input id="reNewPasswordS" type="password" class="form-control"
+							placeholder="请再输一遍您的新密码"
+							onkeydown="if(event.keyCode==13){checkChangePasswd();}" /><br />
 						<input class="btn btn-lg btn-primary btn-block" type="button"
 							onclick="checkChangePasswd()" value="修改密码" />
 					</form>

@@ -41,12 +41,13 @@
 	<!-- nav -->
 	<%@ include file="nav.html"%>
 
-	<div class="container" style="margin-top: 500px">
+	<div class="container" style="margin-top: 50px">
 		<div class="panel panel-success">
 			<div class="panel-heading">菜单</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<form action="Order" method="post">
+						<input class="btn btn-normal btn-lg" type="submit" value="提交订单" />
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -64,15 +65,15 @@
 									<td><%=dish.get("name")%></td>
 									<td><%=dish.get("type")%></td>
 									<td><%=dish.get("spicy")%></td>
-									<td><input type="checkbox" name="dish"
-										value=<%=dish.get("name")%>>点一个</td>
+									<td>点一个<input type="checkbox" name="dish"
+										value=<%=dish.get("name")%> onchange="toggleCheckbox(this)"></td>
 								</tr>
 								<%
 									}
 								%>
 							</tbody>
 						</table>
-						<input class="btn btn-normal btn-lg" type="submit">
+						<input class="btn btn-normal btn-lg" type="submit" value="提交订单" />
 					</form>
 				</div>
 			</div>
@@ -81,13 +82,15 @@
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-		var list = '${dishes}';
-		list = list.slice(1, list.length - 1);
-		var dishes = list.split(", ");
-		for (var i = 0; i < dishes.length; i++) {
-			console.log('\'[value=' + dishes[i] + ']\'');
-			$('[value=' + dishes[i] + ']').attr("checked", "checked");
-		};
+		function toggleCheckbox(element) {
+			var tr = $(element).parent().parent();
+			if (tr.attr("class") != "success") {
+				tr.attr("class", "success");
+			} else {
+				tr.attr("class", "");
+			}
+		}
 	</script>
+	<%@ include file="returnTop.html"%>
 </body>
 </html>

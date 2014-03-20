@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -282,13 +281,13 @@ public class FaceGetterAction extends ActionSupport {
 		Calendar time = Calendar.getInstance();
 		int hour = time.get(Calendar.HOUR_OF_DAY);
 		// System.out.println(hour);
-		int base = 0, series = 0;
+		int base = 0;
 		int[] selectedNum;
 		boolean type = true;
 		rand = new Random();
 		double chance = 0;
 		int age = 0, range = 0;
-		double confidence = 0, smiling = 0;
+		double smiling = 0;
 		boolean gender = true;
 		try {
 			JSONObject AGE = attribute.getJSONObject("age");
@@ -297,7 +296,6 @@ public class FaceGetterAction extends ActionSupport {
 			age = AGE.getInt("value");
 			range = AGE.getInt("range");
 			gender = ((GENDER.getString("value").equals("Male")) ? true : false);
-			confidence = GENDER.getDouble("confidence");
 			smiling = SMILING.getDouble("value");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -331,9 +329,6 @@ public class FaceGetterAction extends ActionSupport {
 		for (int i = 0; i < selectedNum.length; i++) {
 			dishes.add((String) menu.get(selectedNum[i]).get("name"));
 		}
-		// for (int i = 0; i < dishes.size(); i++) {
-		// System.out.println(dishes.get(i));
-		// }
 	}
 
 	private List<DBObject> getDish(boolean type, boolean gender) {

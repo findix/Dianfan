@@ -2,7 +2,7 @@ package com.find1x.dianfan.action;
 
 import java.util.List;
 
-import com.find1x.dianfan.User;
+import com.find1x.dianfan.pojos.User;
 import com.find1x.dianfan.util.MongoDBUtil;
 import com.find1x.dianfan.util.QueryUtil;
 import com.mongodb.DBCollection;

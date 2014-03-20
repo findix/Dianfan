@@ -1,0 +1,76 @@
+﻿<style>
+.returnTop {
+	position: fixed;
+	_position: absolute;
+	right: 10px;
+	bottom: 200px;
+	_bottom: auto;
+	display: none;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #61b72e;
+	border-radius: 4px;
+	background: #fff;
+	box-shadow: 0 0 5px #F5F5F5;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+.returnTop .s {
+	position: absolute;
+	top: -2px;
+	_top: -20px;
+	left: 10px;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-color: transparent transparent #61b72e;
+	border-style: dashed dashed solid;
+}
+
+.returnTop .b {
+	position: absolute;
+	top: 18px;
+	left: 16px;
+	height: 12px;
+	width: 8px;
+	background: #61b72e;
+}
+</style>
+<div class="returnTop" title="嗖的就上去了！">
+	<span class="s"></span> <span class="b"></span> 返回顶部
+</div>
+<script>
+	$(function() {
+		// 给 window 对象绑定 scroll 事件
+		$(window)
+				.bind(
+						"scroll",
+						function() {
+
+							// 获取网页文档对象滚动条的垂直偏移
+							var scrollTopNum = $(document).scrollTop(),
+							// 获取浏览器当前窗口的高度
+							winHeight = $(window).height(), returnTop = $("div.returnTop");
+
+							// 滚动条的垂直偏移大于 0 时显示，反之隐藏
+							(scrollTopNum > 0) ? returnTop.fadeIn("fast")
+									: returnTop.fadeOut("fast");
+
+							// 给 IE6 定位
+							if (!-[ 1, ] && !window.XMLHttpRequest) {
+								returnTop.css("top", scrollTopNum + winHeight
+										- 200);
+							}
+
+						});
+
+		// 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
+		$("div.returnTop").click(function() {
+			$("html, body").animate({
+				scrollTop : 0
+			}, 100);
+		});
+
+	});
+</script>

@@ -58,7 +58,7 @@
 		<div class="row" align="center" style="margin: 20px">
 			<div class="col-md-4">
 				<button type="button" class="btn btn-primary"
-					style="width: 200px; height: 200px;" data-toggle="modal"
+					style="width: 100%; height: 200px;" data-toggle="modal"
 					data-target="#videoModal">
 					<span class="glyphicon glyphicon-user"></span> <br /> <br />
 					人脸识别点餐
@@ -66,15 +66,15 @@
 			</div>
 			<div class="col-md-4">
 				<button type="button" onclick="window.location.href='directOrder'"
-					class="btn btn-default" style="width: 200px; height: 200px;"
+					class="btn btn-default" style="width: 100%; height: 200px;"
 					data-toggle="modal">
 					<span class="glyphicon glyphicon-log-in"></span> <br /> <br />直接点餐
 				</button>
 			</div>
 			<div class="col-md-4">
 				<button type="button" onclick="window.location.href='faceTest'"
-					class="btn btn-success" style="width: 200px; height: 200px;"
-					data-toggle="modal">通过照片Url识别</button>
+					class="btn btn-success" style="width: 100%; height: 200px;"
+					data-toggle="modal"><span class="glyphicon glyphicon-picture"></span> <br /> <br />通过照片Url识别</button>
 			</div>
 		</div>
 	</div>
@@ -91,7 +91,7 @@
 				<div class="modal-body" align="center">
 					<form action="FaceGetter" method="post" id="face">
 						<input type="hidden" name="imgData" id="imgData" />
-						<div id=wait class="alert alert-info" style="display: none">请稍候……(可能需要较长时间)</div>
+						<div id="wait" class="alert alert-info" style="display: none">请稍候……(可能需要较长时间)</div>
 						<button id="snap" type="button" class="btn btn-default">拍照并识别</button>
 					</form>
 					<p id="info">

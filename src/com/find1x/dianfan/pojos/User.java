@@ -1,4 +1,4 @@
-package com.find1x.dianfan;
+package com.find1x.dianfan.pojos;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

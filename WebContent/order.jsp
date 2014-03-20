@@ -33,9 +33,9 @@
 <body>
 	<%
 		String username = "";
-		if (session.getAttribute("username") != null) {
-			username = session.getAttribute("username").toString();
-		}
+			if (session.getAttribute("username") != null) {
+		username = session.getAttribute("username").toString();
+			}
 	%>
 
 	<!-- nav -->
@@ -48,7 +48,8 @@
 				<tr>
 					<td>
 						<div>
-							<img src="${imgData}${url}" class="img-thumbnail" style="max-hight: 160px" />
+							<img src="${imgData}${url}" class="img-thumbnail"
+								style="max-height: 200px;" />
 						</div>
 					</td>
 					<td>
@@ -57,12 +58,13 @@
 				</tr>
 			</table>
 		</div>
-		<div class="alert alert-success">根据您的照片推荐您:${dishes}</div>
+		<div class="alert alert-success">根据您的照片向您推荐:${dishes}</div>
 		<div class="panel panel-success">
 			<div class="panel-heading">菜单</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<form action="Order" method="post">
+						<input class="btn btn-normal btn-lg" type="submit" value="提交订单" />
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -71,24 +73,24 @@
 									<td>辣度</td>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="menu">
 								<%
 									for (DBObject dish : QueryUtil.getMenu()) {
 								%>
 
-								<tr>
+								<tr id=<%=dish.get("name")%>>
 									<td><%=dish.get("name")%></td>
 									<td><%=dish.get("type")%></td>
 									<td><%=dish.get("spicy")%></td>
 									<td><input type="checkbox" name="dish"
-										value=<%=dish.get("name")%>>点一个</td>
+										value=<%=dish.get("name")%> onchange="toggleCheckbox(this)">点一个</td>
 								</tr>
 								<%
 									}
 								%>
 							</tbody>
 						</table>
-						<input class="btn btn-normal btn-lg" type="submit">
+						<input class="btn btn-normal btn-lg" type="submit" value="提交订单" />
 					</form>
 				</div>
 			</div>
@@ -101,9 +103,21 @@
 		list = list.slice(1, list.length - 1);
 		var dishes = list.split(", ");
 		for (var i = 0; i < dishes.length; i++) {
-			console.log('\'[value=' + dishes[i] + ']\'');
 			$('[value=' + dishes[i] + ']').attr("checked", "checked");
+			var dish = $('#' + dishes[i]).attr("class", "success");
+			$('#' + dishes[i]).attr("class", "success").remove();
+			$("tbody#menu").prepend(dish);
+
 		};
+		function toggleCheckbox(element) {
+			var tr = $(element).parent().parent();
+			if (tr.attr("class") != "success") {
+				tr.attr("class", "success");
+			} else {
+				tr.attr("class", "");
+			}
+		}
 	</script>
+	<%@ include file="returnTop.html"%>
 </body>
 </html>

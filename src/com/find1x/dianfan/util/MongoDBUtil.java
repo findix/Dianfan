@@ -2,7 +2,7 @@ package com.find1x.dianfan.util;
 
 import java.net.UnknownHostException;
 
-import com.find1x.dianfan.User;
+import com.find1x.dianfan.pojos.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
